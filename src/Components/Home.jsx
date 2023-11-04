@@ -1,5 +1,12 @@
+import Slider from "./Shared/Slider";
+
 const Home = () => {
-  return <div>Hi, from the Homepage of RHR-Hotel</div>;
+  return (
+    <div>
+      <Slider />
+      <p>Hi, from the Homepage of RHR-Hotel</p>
+    </div>
+  );
 };
 
 export default Home;
