@@ -25,7 +25,7 @@ const Navbar = () => {
       </li>
       <li>
         <NavLink
-          to="/book"
+          to="/booked"
           className={({ isActive }) =>
             isActive ? "border border-orange-600" : ""
           }
