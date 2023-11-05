@@ -4,6 +4,7 @@ import "./index.css";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import App from "./App";
 import Home from "./Components/Home";
+import Rooms from "./Components/Rooms";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,11 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/room",
+        element: <Rooms />,
+        loader: () => fetch("http://localhost:5000/room"),
       },
     ],
   },

@@ -1,0 +1,86 @@
+[
+  {
+    "num": 1,
+    "description": "Luxury Suite with Ocean View, perfect for a romantic getaway.",
+    "price": 350.0,
+    "size": "500 sq ft",
+    "status": "Available",
+    "image": "https://i.imgur.com/8i1T24e.jpg",
+    "offers": "Stay 4 nights, pay for 3!",
+    "review": 4,
+    "review_count": 25,
+    "featured": true
+  },
+  {
+    "num": 2,
+    "description": "Deluxe Double Room with King-size bed and city view.",
+    "price": 180.0,
+    "size": "350 sq ft",
+    "status": "Available",
+    "image": "https://i.imgur.com/x1CrW1O.jpg",
+    "offers": "Complimentary breakfast included.",
+    "review": 3,
+    "review_count": 20,
+    "featured": true
+  },
+  {
+    "num": 3,
+    "description": "Family Suite with two bedrooms and a spacious living area.",
+    "price": 420.0,
+    "size": "700 sq ft",
+    "status": "Booked",
+    "image": "https://i.imgur.com/G9g9lCT.jpg",
+    "offers": "50% off on the second room for families.",
+    "review": 5,
+    "review_count": 30,
+    "featured": true
+  },
+  {
+    "num": 4,
+    "description": "Standard Room with garden view and twin beds.",
+    "price": 120.0,
+    "size": "300 sq ft",
+    "status": "Available",
+    "image": "https://i.imgur.com/C2W4Xs3.jpg",
+    "offers": "10% off for early bird bookings.",
+    "review": 2,
+    "review_count": 15,
+    "featured": true
+  },
+  {
+    "num": 5,
+    "description": "Executive Suite with a private balcony and cityscape.",
+    "price": 280.0,
+    "size": "450 sq ft",
+    "status": "Available",
+    "image": "https://i.imgur.com/N5z3926.jpg",
+    "offers": "Free airport transfer for stays of 5 nights or more.",
+    "review": 4,
+    "review_count": 22,
+    "featured": false
+  },
+  {
+    "num": 6,
+    "description": "Penthouse with panoramic views, a Jacuzzi, and a butler service.",
+    "price": 800.0,
+    "size": "1000 sq ft",
+    "status": "Available",
+    "image": "https://i.imgur.com/0gQSRTm.jpg",
+    "offers": "Complimentary bottle of champagne upon arrival.",
+    "review": 5,
+    "review_count": 28,
+    "featured": false
+  },
+  {
+    "num": 7,
+    "description": "Deluxe Single Room with a cozy atmosphere and a work desk.",
+    "price": 150.0,
+    "size": "250 sq ft",
+    "status": "Available",
+    "image": "https://i.imgur.com/eLfOmU6.jpg",
+    "offers": "10% off for solo travelers.",
+    "review": 1,
+    "review_count": 10,
+    "featured": false
+  }
+]
