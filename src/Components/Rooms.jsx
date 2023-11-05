@@ -18,9 +18,7 @@ const Rooms = () => {
           className="select select-bordered w-full max-w-xs"
           onChange={handleSort}
         >
-          <option selected value="">
-            Sort by price
-          </option>
+          <option value="">Sort by price</option>
           <option value="asc">Sort Low to High Price </option>
           <option value="desc"> Sort High to Low Price</option>
         </select>
@@ -28,12 +26,14 @@ const Rooms = () => {
       <div className="grid grid-cols-3 gap-10 mx-10 mb-10">
         {availableRooms.map((Room) => (
           <div className="card shadow-xl" key={Room._id}>
-            <Link className="card-body" to={`/details/${Room._id}`}>
+            <Link className="card-body" to={`/room/details/${Room._id}`}>
               <img className="rounded-lg" src={Room.image} alt="" />
-
-              <p className="text-center">
-                Only for <span className=" font-bold">{Room.price}</span> $
-              </p>
+              <div className="flex mt-2">
+                <p>{Room.review_count} review!</p>
+                <p className="text-center">
+                  Price: <span className=" font-bold">{Room.price}</span> $
+                </p>
+              </div>
             </Link>
           </div>
         ))}
