@@ -1,8 +1,9 @@
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const Details = () => {
   const Room = useLoaderData();
+  const navigate = useNavigate();
   // console.log(Room);
   // const Ratings = (
   //   <div className="rating">
@@ -73,6 +74,7 @@ const Details = () => {
           .then((res) => res.json())
           .then((data) => console.log(data));
         Swal.fire("Booked!", "Your Booking is done", "success");
+        navigate("/room");
       }
     });
   };

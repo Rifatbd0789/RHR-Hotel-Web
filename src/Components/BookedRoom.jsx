@@ -2,11 +2,9 @@ import { useState } from "react";
 import Swal from "sweetalert2";
 
 /* eslint-disable react/prop-types */
-const BookedRoom = ({ Room }) => {
-  //   const { _id } = Room;
-  //   console.log(Room._id);
+const BookedRoom = ({ Room, handleCancel }) => {
   const [date, setDate] = useState(Room.date);
-  //   console.log(date);
+
   const handleUpdateDate = async (id) => {
     const { value: date } = await Swal.fire({
       title: "Input email address",
@@ -14,10 +12,7 @@ const BookedRoom = ({ Room }) => {
       inputLabel: "Your email address",
       inputPlaceholder: "Enter your email address",
     });
-
     const dateStore = { date };
-    // console.log(date, id);
-
     fetch(`http://localhost:5000/booked/${id}`, {
       method: "PATCH",
       headers: {
@@ -45,7 +40,6 @@ const BookedRoom = ({ Room }) => {
         <p>
           Check In date: <span className="font-bold">{date}</span>
         </p>
-
         <p>{Room.short_description}</p>
         <div className="card-actions justify-between">
           <button
@@ -54,7 +48,12 @@ const BookedRoom = ({ Room }) => {
           >
             Update Date
           </button>
-          <button className="btn btn-outline btn-error">Cancel</button>
+          <button
+            onClick={() => handleCancel(Room._id)}
+            className="btn btn-outline btn-error"
+          >
+            Cancel
+          </button>
         </div>
       </div>
     </div>
