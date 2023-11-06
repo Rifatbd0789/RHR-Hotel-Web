@@ -7,6 +7,10 @@ import Home from "./Components/Home";
 import Rooms from "./Components/Rooms";
 import Details from "./Components/Details";
 import Booked from "./Components/Booked";
+import Login from "./Components/Login";
+import Provider from "./Components/ContextProvider/Provider";
+import Register from "./Components/Register";
+import Private from "./Components/Private";
 
 const router = createBrowserRouter([
   {
@@ -24,14 +28,30 @@ const router = createBrowserRouter([
       },
       {
         path: "/room/details/:id",
-        element: <Details />,
+        element: (
+          <Private>
+            <Details />
+          </Private>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/room/details/${params.id}`),
       },
       {
         path: "/booked",
-        element: <Booked />,
+        element: (
+          <Private>
+            <Booked />
+          </Private>
+        ),
         loader: () => fetch("http://localhost:5000/booked"),
+      },
+      {
+        path: "/login",
+        element: <Login />,
+      },
+      {
+        path: "/register",
+        element: <Register />,
       },
     ],
   },
@@ -39,6 +59,8 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <Provider>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
