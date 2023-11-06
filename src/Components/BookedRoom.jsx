@@ -1,3 +1,4 @@
+import axios from "axios";
 import moment from "moment/moment";
 import { useState } from "react";
 import Swal from "sweetalert2";
@@ -8,10 +9,12 @@ const BookedRoom = ({ Room, setBookedRooms, bookedRooms }) => {
 
   const handleUpdateDate = async (id) => {
     const { value: date } = await Swal.fire({
-      title: "Input email address",
+      title: "Choose Check In Date",
+      inputAttributes: {
+        required: "true",
+      },
       input: "date",
-      inputLabel: "Your email address",
-      inputPlaceholder: "Enter your email address",
+      inputLabel: "Check In Date",
     });
     const dateStore = { date };
     fetch(`http://localhost:5000/booked/${id}`, {
@@ -77,6 +80,38 @@ const BookedRoom = ({ Room, setBookedRooms, bookedRooms }) => {
     }
   };
 
+  const handlePostReview = () => {
+    console.log(Room._id);
+    Swal.fire({
+      title: "Rate and Comment",
+      html:
+        "<div>" +
+        '<label for="rating">Rate Our Service! (1-5):</label>' +
+        '<input id="rating" class="swal2-input" type="number" min="1" max="5" placeholder="Rating (1-5)">' +
+        "</div>" +
+        "<div>" +
+        '<label for="comment">Comment:</label>' +
+        '<input id="comment" class="swal2-input" type="text" placeholder="Comment">' +
+        "</div>",
+      showCancelButton: true,
+      preConfirm: () => {
+        let rating = document.getElementById("rating").value;
+        const comment = document.getElementById("comment").value;
+        const review = { num: Room.num, rating, comment };
+        axios.post(`http://localhost:5000/review`, review).then((res) => {
+          console.log(res.data);
+          if (res.data.insertedId) {
+            Swal.fire({
+              title: "Posted!",
+              text: "Thanks for your review!.",
+              icon: "success",
+            });
+          }
+        });
+      },
+    });
+  };
+
   return (
     <div className="card bg-base-100 shadow-xl mx-auto">
       <figure>
@@ -88,6 +123,12 @@ const BookedRoom = ({ Room, setBookedRooms, bookedRooms }) => {
           Check In date: <span className="font-bold">{date}</span>
         </p>
         <p>{Room.short_description}</p>
+        <p
+          onClick={handlePostReview}
+          className="text-blue-600 link link-hover mx-1"
+        >
+          Post a review!
+        </p>
         <div className="card-actions justify-between">
           <button
             onClick={() => handleUpdateDate(Room._id)}
