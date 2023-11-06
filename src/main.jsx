@@ -28,13 +28,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/room/details/:id",
-        element: (
-          <Private>
-            <Details />
-          </Private>
-        ),
+        element: <Details />,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/room/details/${params.id}`),
+          fetch(`http://localhost:5000/room/details/${params.id}`, {
+            credentials: "include",
+          }),
       },
       {
         path: "/booked",
@@ -43,7 +41,8 @@ const router = createBrowserRouter([
             <Booked />
           </Private>
         ),
-        loader: () => fetch("http://localhost:5000/booked"),
+        loader: () =>
+          fetch("http://localhost:5000/booked", { credentials: "include" }),
       },
       {
         path: "/login",

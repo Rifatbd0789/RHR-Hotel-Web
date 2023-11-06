@@ -20,6 +20,7 @@ const BookedRoom = ({ Room, setBookedRooms, bookedRooms }) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(dateStore),
+      credentials: "include",
     })
       .then((res) => res.json())
       .then((data) => {
@@ -55,6 +56,7 @@ const BookedRoom = ({ Room, setBookedRooms, bookedRooms }) => {
             headers: {
               "Content-Type": "application/json",
             },
+            credentials: "include",
           })
             .then((res) => res.json())
             .then((data) => {

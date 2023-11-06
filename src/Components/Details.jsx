@@ -70,11 +70,18 @@ const Details = () => {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(dateStore),
+          credentials: "include",
         })
           .then((res) => res.json())
-          .then((data) => console.log(data));
-        Swal.fire("Booked!", "Your Booking is done", "success");
-        navigate("/room");
+          .then((data) => {
+            if (data.modifiedCount > 0) {
+              Swal.fire("Booked!", "Your Booking is completed", "success");
+              navigate("/room");
+            } else {
+              Swal.fire("Sorry!", "please log in first !", "error");
+              navigate("/login");
+            }
+          });
       }
     });
   };
