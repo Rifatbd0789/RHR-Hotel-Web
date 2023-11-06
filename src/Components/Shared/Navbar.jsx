@@ -23,6 +23,7 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
+
       <li>
         <NavLink
           to="/room"
@@ -33,6 +34,7 @@ const Navbar = () => {
           Rooms
         </NavLink>
       </li>
+
       <li>
         <NavLink
           to="/booked"

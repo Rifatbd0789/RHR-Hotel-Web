@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
@@ -87,6 +88,9 @@ const Details = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Details</title>
+      </Helmet>
       <div className="card grid lg:grid-cols-2 bg-base-100 shadow-xl mx-10 px-5">
         <figure>
           <img src={Room.image} alt="Album" />

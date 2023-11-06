@@ -4,6 +4,7 @@ import { updateProfile } from "firebase/auth";
 import { context } from "./ContextProvider/Provider";
 import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const { createUser, googleLogIn } = useContext(context);
@@ -64,6 +65,9 @@ const Register = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Registration</title>
+      </Helmet>
       <div className="hero min-h-screen  bg-orange-400">
         <div className="hero-content flex-col lg:flex-col">
           <div className="text-center lg:text-left">

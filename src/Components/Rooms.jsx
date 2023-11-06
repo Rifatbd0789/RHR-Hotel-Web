@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Helmet } from "react-helmet";
 import { Link, useLoaderData } from "react-router-dom";
 
 const Rooms = () => {
@@ -13,6 +14,9 @@ const Rooms = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Rooms</title>
+      </Helmet>
       <div className="flex justify-center">
         <select
           className="select select-bordered w-full max-w-xs"

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import BookedRoom from "./BookedRoom";
+import { Helmet } from "react-helmet";
 // import Swal from "sweetalert2";
 
 const Booked = () => {
@@ -9,7 +10,10 @@ const Booked = () => {
   //   setBookedRooms(Room);
 
   return (
-    <div className="">
+    <div>
+      <Helmet>
+        <title>Booked Rooms</title>
+      </Helmet>
       <p className="text-center font-bold text-3xl">
         My Bookings: {bookedRooms.length}
       </p>

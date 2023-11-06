@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 import { context } from "./ContextProvider/Provider";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const Login = () => {
   const { logInUser, googleLogIn } = useContext(context);
@@ -35,6 +36,9 @@ const Login = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Login</title>
+      </Helmet>
       <div className="hero min-h-screen bg-orange-400">
         <div className="hero-content flex-col ">
           <div className="text-center lg:text-left">
