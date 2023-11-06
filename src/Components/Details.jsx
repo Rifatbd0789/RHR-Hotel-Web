@@ -1,55 +1,24 @@
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import DetailReview from "./Shared/DetailReview";
+import { context } from "./ContextProvider/Provider";
 
 const Details = () => {
   const Room = useLoaderData();
   const navigate = useNavigate();
-  // console.log(Room);
-  // const Ratings = (
-  //   <div className="rating">
-  //     <input
-  //       type="radio"
-  //       name="rating-1"
-  //       disabled
-  //       defaultChecked={Room.review === 1}
-  //       className="mask mask-star-2 bg-orange-400"
-  //     />
-  //     <input
-  //       type="radio"
-  //       name="rating-2"
-  //       disabled
-  //       defaultChecked={Room.review === 2}
-  //       className="mask mask-star-2 bg-orange-400"
-  //     />
-  //     <input
-  //       type="radio"
-  //       name="rating-3"
-  //       disabled
-  //       defaultChecked={Room.review === 3}
-  //       className="mask mask-star-2 bg-orange-400"
-  //     />
-  //     <input
-  //       type="radio"
-  //       name="rating-4"
-  //       disabled
-  //       defaultChecked={Room.review === 4}
-  //       className="mask mask-star-2 bg-orange-400"
-  //     />
-  //     <input
-  //       type="radio"
-  //       name="rating-5"
-  //       disabled
-  //       defaultChecked={Room.review === 5}
-  //       className="mask mask-star-2 bg-orange-400"
-  //     />
-  //   </div>
-  // );
+  const [Reviews, setReviews] = useState([]);
+  const { user } = useContext(context);
+  const userEmail = user?.displayName;
+  // console.log(userEmail);
+
   const handleBook = (e) => {
     e.preventDefault();
     const date = e.target.date.value;
     console.log(date);
-    const dateStore = { date };
+    const dateStore = { date, userEmail };
     Swal.fire({
       title: "Are you sure?",
       html: `
@@ -86,35 +55,65 @@ const Details = () => {
       }
     });
   };
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/review/${Room.num}`)
+      .then((res) => setReviews(res.data))
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  }, [Room.num]);
   return (
     <div>
       <Helmet>
         <title>Details</title>
       </Helmet>
-      <div className="card grid lg:grid-cols-2 bg-base-100 shadow-xl mx-10 px-5">
-        <figure>
-          <img src={Room.image} alt="Album" />
-        </figure>
-        <div className="card-body">
-          <p>{Room.description}</p>
-          <p>
-            Price: <span className="font-bold"> {Room.price}$ </span>
-            per night
-          </p>
-          <p>Size: {Room.size}</p>
-          <p>Status: {Room.status}</p>
-          <p>Offer: {Room?.offers} (Limited Time)</p>
-          {/* <div> {Ratings}</div> */}
-          <form onSubmit={handleBook}>
-            <input type="date" required name="date" id="" />
-            <div className="card-actions justify-end">
-              <input
-                type="submit"
-                value="Book Now"
-                className="btn btn-primary"
-              />
-            </div>
-          </form>
+      <div className="card pb-5  bg-base-100 shadow-xl mx-10 px-5">
+        <div className="grid lg:grid-cols-2">
+          <figure>
+            <img src={Room.image} alt="Album" />
+          </figure>
+          <div className="card-body">
+            <p>{Room.short_description}</p>
+            <p>
+              Price: <span className="font-bold"> {Room.price}$ </span>
+              per night
+            </p>
+            <p>Size: {Room.size}</p>
+            <p>Status: {Room.status}</p>
+            <p>
+              Offer:{" "}
+              {Room?.offers ? (
+                Room.offers
+              ) : (
+                <span className="text-red-400">No Offers Available !</span>
+              )}
+            </p>
+            {/* <div> {Ratings}</div> */}
+            <form onSubmit={handleBook}>
+              <span>Select your CheckIn Date Below:</span>
+              <div className="flex">
+                <input className="" type="date" required name="date" id="" />
+              </div>
+              <div className="card-actions justify-end">
+                <input
+                  type="submit"
+                  value="Book Now"
+                  className="btn btn-primary"
+                />
+              </div>
+            </form>
+          </div>
+          {/* Review Section */}
+          <div className="flex gap-5 flex-wrap mt-10">
+            {Reviews.length === 0 ? (
+              <p className="text-red-400">Not Reviewed Yet!</p>
+            ) : (
+              Reviews.map((Review) => (
+                <DetailReview key={Review._id} Review={Review}></DetailReview>
+              ))
+            )}
+          </div>
         </div>
       </div>
     </div>
