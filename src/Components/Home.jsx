@@ -18,6 +18,7 @@ const Home = () => {
   return (
     <div className="bg-orange-300">
       <Helmet>
+        <link rel="icon" href="/hotel-svgrepo-com.svg" type="image/x-icon" />
         <title>RHR-Hotel</title>
       </Helmet>
       <div>
@@ -33,7 +34,7 @@ const Home = () => {
           <Featured key={Room.num} Room={Room} />
         ))}
       </div>
-      <div data-aos="fade-down" data-aos-duration="2000">
+      <div data-aos="flip-left" data-aos-duration="2000">
         <h1 className="text-center rounded-xl border border-l-4 border-orange-200 m-5 bg-orange-200 md:text-3xl font-bold py-2">
           Guests Testimonials
         </h1>

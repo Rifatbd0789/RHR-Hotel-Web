@@ -82,6 +82,7 @@ const Details = () => {
   return (
     <div>
       <Helmet>
+        <link rel="icon" href="/details.svg" type="image/x-icon" />
         <title>Details</title>
       </Helmet>
       <div className="card pb-5  bg-base-100 shadow-xl mx-10 px-5 pt-2">

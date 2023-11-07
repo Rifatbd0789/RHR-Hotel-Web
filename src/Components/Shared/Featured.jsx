@@ -11,7 +11,7 @@ const Featured = ({ Room }) => {
     <div>
       <div
         data-aos="flip-left"
-        data-aos-duration="3000"
+        data-aos-duration="2000"
         className="card bg-base-100 shadow-2xl"
       >
         <figure>

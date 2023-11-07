@@ -17,6 +17,7 @@ const Booked = () => {
   return (
     <div>
       <Helmet>
+        <link rel="icon" href="/booked.svg" type="image/x-icon" />
         <title>Booked Rooms</title>
       </Helmet>
       <div data-aos="fade-up" data-aos-duration="2000">

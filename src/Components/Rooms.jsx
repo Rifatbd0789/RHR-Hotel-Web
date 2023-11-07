@@ -20,6 +20,7 @@ const Rooms = () => {
   return (
     <div>
       <Helmet>
+        <link rel="icon" href="/room.svg" type="image/x-icon" />
         <title>Rooms</title>
       </Helmet>
       <div className="flex justify-center">
