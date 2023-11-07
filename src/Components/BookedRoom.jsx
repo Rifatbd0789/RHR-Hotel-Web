@@ -1,12 +1,14 @@
 import axios from "axios";
 import moment from "moment/moment";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import Swal from "sweetalert2";
+import { context } from "./ContextProvider/Provider";
 
 /* eslint-disable react/prop-types */
 const BookedRoom = ({ Room, setBookedRooms, bookedRooms }) => {
   const [Date, setDate] = useState(Room.date);
-
+  const { user } = useContext(context);
+  const userName = user?.displayName;
   const handleUpdateDate = async () => {
     const { value: date } = await Swal.fire({
       title: "Choose Check In Date",
@@ -81,7 +83,11 @@ const BookedRoom = ({ Room, setBookedRooms, bookedRooms }) => {
         }
       });
     } else {
-      Swal.fire("Sorry !");
+      Swal.fire({
+        title: "Sorry !",
+        text: "your cancellation date is over.",
+        icon: "error",
+      });
     }
   };
 
@@ -101,7 +107,7 @@ const BookedRoom = ({ Room, setBookedRooms, bookedRooms }) => {
       preConfirm: () => {
         let rating = document.getElementById("rating").value;
         const comment = document.getElementById("comment").value;
-        const review = { num: Room.num, rating, comment };
+        const review = { num: Room.num, rating, comment, userName };
         axios.post(`http://localhost:5000/review`, review).then((res) => {
           console.log(res.data);
           if (res.data.insertedId) {

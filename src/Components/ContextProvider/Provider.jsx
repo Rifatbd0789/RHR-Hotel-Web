@@ -52,7 +52,7 @@ const Provider = ({ children }) => {
             withCredentials: true,
           })
           .then((res) => {
-            console.log(res.data);
+            console.log(res.data.message);
           });
       } else {
         axios
@@ -60,7 +60,7 @@ const Provider = ({ children }) => {
             withCredentials: true,
           })
           .then((res) => {
-            console.log(res.data);
+            console.log(res.data.message);
           });
       }
     });

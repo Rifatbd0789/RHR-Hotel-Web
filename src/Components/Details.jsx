@@ -50,17 +50,22 @@ const Details = () => {
         // Booking and sending date to server
 
         axios
-          .put(`http://localhost:5000/room/seat/${Room._id}`, seats)
+          .put(`http://localhost:5000/room/seat/${Room._id}`, seats, {
+            withCredentials: true,
+          })
           .then((res) => {
+            console.log(res.data);
             if (res.data.modifiedCount > 0) {
               Swal.fire("Booked!", "Your Booking is completed", "success");
-              navigate("/room");
-            } else {
+              navigate("/booked");
+            }
+          })
+          .catch((error) => {
+            if (error) {
               Swal.fire("Sorry!", "please log in first !", "error");
               navigate("/login");
             }
           });
-        navigate("/room");
       }
     });
   };

@@ -45,6 +45,7 @@ const DetailReview = ({ Review }) => {
   const createdAt = moment(Review?.created).format("lll");
   return (
     <div className="text-center">
+      <h1>{Review.userName}</h1>
       <div>{Ratings}</div>
       <h2>{Review.comment}</h2>
       <p>{createdAt}</p>
