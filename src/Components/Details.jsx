@@ -83,7 +83,11 @@ const Details = () => {
         <title>Details</title>
       </Helmet>
       <div className="card pb-5  bg-base-100 shadow-xl mx-10 px-5 pt-2">
-        <div className="grid grid-cols-1 lg:grid-cols-2">
+        <div
+          data-aos="fade-down"
+          data-aos-duration="2000"
+          className="grid grid-cols-1 lg:grid-cols-2"
+        >
           <figure>
             <img src={Room.image} alt="Album" />
           </figure>
@@ -137,17 +141,19 @@ const Details = () => {
           </div>
           {/* Review Section */}
         </div>
-        <h1 className="text-center rounded-xl border border-l-4 border-orange-200 m-5 bg-orange-200 md:text-3xl font-bold ">
-          Reviews
-        </h1>
-        <div className="flex flex-wrap gap-5 mt-10">
-          {Reviews.length === 0 ? (
-            <p className="text-red-400">Not Reviewed Yet!</p>
-          ) : (
-            Reviews.map((Review) => (
-              <DetailReview key={Review._id} Review={Review}></DetailReview>
-            ))
-          )}
+        <div data-aos="fade-up" data-aos-duration="2000">
+          <h1 className="text-center rounded-xl border border-l-4 border-orange-200 m-5 bg-orange-200 md:text-3xl font-bold ">
+            Reviews
+          </h1>
+          <div className="flex flex-wrap gap-5 mt-10">
+            {Reviews.length === 0 ? (
+              <p className="text-red-400">Not Reviewed Yet!</p>
+            ) : (
+              Reviews.map((Review) => (
+                <DetailReview key={Review._id} Review={Review}></DetailReview>
+              ))
+            )}
+          </div>
         </div>
       </div>
     </div>

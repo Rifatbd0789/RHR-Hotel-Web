@@ -12,7 +12,10 @@ import Provider from "./Components/ContextProvider/Provider";
 import Register from "./Components/Register";
 import Private from "./Components/Private";
 import Error from "./Components/Shared/Error";
+import Aos from "aos";
 
+import "aos/dist/aos.css";
+Aos.init();
 const router = createBrowserRouter([
   {
     path: "/",

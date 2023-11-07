@@ -27,10 +27,16 @@ const Rooms = () => {
           <option value="desc"> Sort High to Low Price</option>
         </select>
       </div>
-      <h1 className="text-center rounded-xl border border-l-4 border-orange-200 m-5 bg-orange-200 md:text-3xl font-bold py-2">
-        Available Rooms !
-      </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mx-10 mb-10">
+      <div data-aos="fade-down" data-aos-duration="2000">
+        <h1 className="text-center rounded-xl border border-l-4 border-orange-200 m-5 bg-orange-200 md:text-3xl font-bold py-2">
+          Available Rooms !
+        </h1>
+      </div>
+      <div
+        data-aos="fade-up"
+        data-aos-duration="2000"
+        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mx-10 mb-10"
+      >
         {availableRooms.map((Room) => (
           <div className="card bg-base-100 shadow-2xl" key={Room._id}>
             <Link className="card-body" to={`/room/details/${Room._id}`}>

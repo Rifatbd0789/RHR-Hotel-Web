@@ -5,7 +5,11 @@ const Featured = ({ Room }) => {
   console.log(Room);
   return (
     <div>
-      <div className="card bg-base-100 shadow-2xl">
+      <div
+        data-aos="flip-left"
+        data-aos-duration="3000"
+        className="card bg-base-100 shadow-2xl"
+      >
         <figure>
           <img src={Room.image} alt="Shoes" />
         </figure>

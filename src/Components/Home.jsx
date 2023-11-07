@@ -19,21 +19,25 @@ const Home = () => {
       <div>
         <Slider />
       </div>
-      <h1 className="text-center rounded-xl border border-l-4 border-orange-200 m-5 bg-orange-200 md:text-3xl font-bold py-2">
-        Featured
-      </h1>
+      <div data-aos="flip-right" data-aos-duration="2000">
+        <h1 className="text-center rounded-xl border border-l-4 border-orange-200 m-5 bg-orange-200 md:text-3xl font-bold py-2">
+          Featured Rooms !
+        </h1>
+      </div>
       <div className="flex flex-col lg:flex-row gap-10 mx-10  ">
         {Rooms.map((Room) => (
           <Featured key={Room.num} Room={Room} />
         ))}
       </div>
-      <h1 className="text-center rounded-xl border border-l-4 border-orange-200 m-5 bg-orange-200 md:text-3xl font-bold py-2">
-        Guests Testimonials
-      </h1>
+      <div data-aos="fade-down" data-aos-duration="2000">
+        <h1 className="text-center rounded-xl border border-l-4 border-orange-200 m-5 bg-orange-200 md:text-3xl font-bold py-2">
+          Guests Testimonials
+        </h1>
+      </div>
       <div className="border-b-2 border-white w-full mx-auto">
         <Testimonial />
       </div>
-      <div>
+      <div data-aos="flip-right" data-aos-duration="2000">
         <Newsletter></Newsletter>
       </div>
     </div>
