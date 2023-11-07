@@ -108,16 +108,20 @@ const BookedRoom = ({ Room, setBookedRooms, bookedRooms }) => {
         let rating = document.getElementById("rating").value;
         const comment = document.getElementById("comment").value;
         const review = { num: Room.num, rating, comment, userName };
-        axios.post(`http://localhost:5000/review`, review).then((res) => {
-          console.log(res.data);
-          if (res.data.insertedId) {
-            Swal.fire({
-              title: "Posted!",
-              text: "Thanks for your review!.",
-              icon: "success",
-            });
-          }
-        });
+        axios
+          .post(`http://localhost:5000/review`, review, {
+            withCredentials: true,
+          })
+          .then((res) => {
+            console.log(res.data);
+            if (res.data.insertedId) {
+              Swal.fire({
+                title: "Posted!",
+                text: "Thanks for your review!.",
+                icon: "success",
+              });
+            }
+          });
       },
     });
   };
@@ -127,7 +131,7 @@ const BookedRoom = ({ Room, setBookedRooms, bookedRooms }) => {
       <figure>
         <img src={Room.image} alt="Shoes" />
       </figure>
-      <div className="card-body">
+      <div className="card-body text-center md:text-left px-2 md:px-8">
         <p>
           Check In date: <span className="font-bold">{Date}</span>
         </p>

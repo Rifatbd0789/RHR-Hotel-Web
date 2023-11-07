@@ -5,7 +5,7 @@ import Footer from "./Components/Shared/Footer";
 
 function App() {
   return (
-    <div>
+    <div className="bg-orange-300">
       <Navbar />
       <Outlet />
       <Footer />

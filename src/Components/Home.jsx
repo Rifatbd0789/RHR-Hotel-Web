@@ -12,19 +12,25 @@ const Home = () => {
   // console.log(Rooms);
 
   return (
-    <div className="">
+    <div className="bg-orange-300">
       <Helmet>
         <title>RHR-Hotel</title>
       </Helmet>
       <div>
         <Slider />
       </div>
-      <div className="flex gap-10 mx-10  ">
+      <h1 className="text-center rounded-xl border border-l-4 border-orange-200 m-5 bg-orange-200 md:text-3xl font-bold py-2">
+        Featured
+      </h1>
+      <div className="flex flex-col lg:flex-row gap-10 mx-10  ">
         {Rooms.map((Room) => (
           <Featured key={Room.num} Room={Room} />
         ))}
       </div>
-      <div className="border-b-2 border-white">
+      <h1 className="text-center rounded-xl border border-l-4 border-orange-200 m-5 bg-orange-200 md:text-3xl font-bold py-2">
+        Guests Testimonials
+      </h1>
+      <div className="border-b-2 border-white w-full mx-auto">
         <Testimonial />
       </div>
       <div>

@@ -5,7 +5,7 @@ const Featured = ({ Room }) => {
   console.log(Room);
   return (
     <div>
-      <div className="card bg-base-100 shadow-xl">
+      <div className="card bg-base-100 shadow-2xl">
         <figure>
           <img src={Room.image} alt="Shoes" />
         </figure>

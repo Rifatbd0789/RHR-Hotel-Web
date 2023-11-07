@@ -51,17 +51,13 @@ const Provider = ({ children }) => {
           .post("http://localhost:5000/jwt", loggedEmail, {
             withCredentials: true,
           })
-          .then((res) => {
-            console.log(res.data.message);
-          });
+          .then(() => {});
       } else {
         axios
           .post("http://localhost:5000/logout", loggedEmail, {
             withCredentials: true,
           })
-          .then((res) => {
-            console.log(res.data.message);
-          });
+          .then(() => {});
       }
     });
     return () => unSubscribe;

@@ -37,7 +37,7 @@ const DetailReview = ({ Review }) => {
         type="radio"
         name="rating-5"
         disabled
-        defaultChecked={Review.rating === "5"}
+        defaultChecked={Review.rating >= "5"}
         className="mask mask-star-2 bg-orange-400"
       />
     </div>

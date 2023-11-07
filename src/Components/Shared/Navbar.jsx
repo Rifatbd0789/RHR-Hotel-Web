@@ -1,11 +1,10 @@
 import { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { context } from "../ContextProvider/Provider";
 import Swal from "sweetalert2";
 
 const Navbar = () => {
   const { user, logOutUser } = useContext(context);
-  console.log(user);
   const handleLogOut = () => {
     logOutUser()
       .then(() => Swal.fire("Logout Successfully!"))
@@ -16,9 +15,7 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/"
-          className={({ isActive }) =>
-            isActive ? "border border-orange-600" : ""
-          }
+          className={({ isActive }) => (isActive ? " bg-orange-200" : "")}
         >
           Home
         </NavLink>
@@ -27,9 +24,7 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/room"
-          className={({ isActive }) =>
-            isActive ? "border border-orange-600" : ""
-          }
+          className={({ isActive }) => (isActive ? "bg-orange-200" : "")}
         >
           Rooms
         </NavLink>
@@ -38,9 +33,7 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/booked"
-          className={({ isActive }) =>
-            isActive ? "border border-orange-600" : ""
-          }
+          className={({ isActive }) => (isActive ? "bg-orange-200" : "")}
         >
           My Bookings
         </NavLink>
@@ -48,24 +41,21 @@ const Navbar = () => {
     </>
   );
   const Users = (
-    <div className="flex items-center">
+    <div className="flex items-center justify-center">
       {user ? (
         <>
           <p className="text-sm md:text-xl">{user?.displayName}</p>
           <img className="w-12 rounded-full mr-2" src={user?.photoURL} alt="" />
           <NavLink
             onClick={handleLogOut}
-            className="btn btn-md border border-orange-600 "
+            className="btn btn-sm md:btn-md bg-orange-200 "
           >
             Log Out
           </NavLink>
         </>
       ) : (
         <>
-          <NavLink
-            to={"/login"}
-            className="btn btn-md border border-orange-600"
-          >
+          <NavLink to={"/login"} className="btn btn-sm md:btn-md bg-orange-200">
             Login
           </NavLink>
         </>
@@ -73,11 +63,11 @@ const Navbar = () => {
     </div>
   );
   return (
-    <div>
-      <div className="navbar bg-base-100">
-        <div className="navbar-start">
+    <div className="">
+      <div className="navbar justify-between">
+        <div className="navbar-start w-fit md:w-1/2">
           <div className="dropdown">
-            <label tabIndex={0} className="btn btn-ghost lg:hidden">
+            <label tabIndex={0} className="btn pr-1 btn-sm btn-ghost lg:hidden">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"
@@ -100,12 +90,21 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <a className="btn btn-ghost normal-case text-xl">daisyUI</a>
+          <Link to="/" className="btn btn-ghost normal-case md:text-xl pl-1">
+            <div className="avatar hidden md:flex w-10">
+              <img
+                className=""
+                src="https://i.ibb.co/ZS8h9t7/hotel-svgrepo-com.png"
+                alt=""
+              />
+            </div>
+            RHR-Hotel
+          </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
-        <div className="navbar-end">
+        <div className="navbar-end w-fit md:w-1/2">
           <a className="">{Users}</a>
         </div>
       </div>

@@ -82,12 +82,12 @@ const Details = () => {
       <Helmet>
         <title>Details</title>
       </Helmet>
-      <div className="card pb-5  bg-base-100 shadow-xl mx-10 px-5">
-        <div className="grid lg:grid-cols-2">
+      <div className="card pb-5  bg-base-100 shadow-xl mx-10 px-5 pt-2">
+        <div className="grid grid-cols-1 lg:grid-cols-2">
           <figure>
             <img src={Room.image} alt="Album" />
           </figure>
-          <div className="card-body">
+          <div className="card-body p-0 md:p-8 py-4 md:py-8">
             <p>{Room.short_description}</p>
             <p>
               Price: <span className="font-bold"> {Room.price}$ </span>
@@ -107,12 +107,18 @@ const Details = () => {
             {/* <div> {Ratings}</div> */}
             <form onSubmit={handleBook}>
               <span>Select your CheckIn Date and Seats Below:</span>
-              <div className="flex gap-4">
-                <input className="" type="date" required name="date" id="" />
+              <div className="flex flex-col md:flex-row md:gap-4 my-2 md:my-0">
+                <input
+                  className="input input-warning"
+                  type="date"
+                  required
+                  name="date"
+                  id=""
+                />
                 <div>
                   <span>Seats: </span>
                   <input
-                    className="input input-warning"
+                    className="input input-warning "
                     type="number"
                     required
                     name="seat"
@@ -124,14 +130,17 @@ const Details = () => {
                 <input
                   type="submit"
                   value="Book Now"
-                  className="btn btn-sm lg:btn-md  shadow-orange-600 shadow-md text-white border-none bg-orange-400  normal-case hover:text-black"
+                  className="btn btn-sm lg:btn-md  shadow-orange-600 shadow-md text-white border-none bg-orange-400  normal-case hover:text-black my-5"
                 />
               </div>
             </form>
           </div>
           {/* Review Section */}
         </div>
-        <div className="flex gap-5 mt-10">
+        <h1 className="text-center rounded-xl border border-l-4 border-orange-200 m-5 bg-orange-200 md:text-3xl font-bold ">
+          Reviews
+        </h1>
+        <div className="flex flex-wrap gap-5 mt-10">
           {Reviews.length === 0 ? (
             <p className="text-red-400">Not Reviewed Yet!</p>
           ) : (
