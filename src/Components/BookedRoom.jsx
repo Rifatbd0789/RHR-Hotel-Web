@@ -5,9 +5,9 @@ import Swal from "sweetalert2";
 
 /* eslint-disable react/prop-types */
 const BookedRoom = ({ Room, setBookedRooms, bookedRooms }) => {
-  const [date, setDate] = useState(Room.date);
+  const [Date, setDate] = useState(Room.date);
 
-  const handleUpdateDate = async (id) => {
+  const handleUpdateDate = async () => {
     const { value: date } = await Swal.fire({
       title: "Choose Check In Date",
       inputAttributes: {
@@ -15,9 +15,10 @@ const BookedRoom = ({ Room, setBookedRooms, bookedRooms }) => {
       },
       input: "date",
       inputLabel: "Check In Date",
+      inputValue: Date,
     });
     const dateStore = { date };
-    fetch(`http://localhost:5000/booked/${id}`, {
+    fetch(`http://localhost:5000/booked/${Room._id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -32,16 +33,18 @@ const BookedRoom = ({ Room, setBookedRooms, bookedRooms }) => {
           setDate(date);
         }
       });
-    // window.location.reload();
   };
 
   const currentDate = moment().format("YYYY-MM-DD");
-  const handleCancel = (id) => {
-    const momentDate = moment(date);
+  const handleCancel = (num) => {
+    const seats = Room.seat;
+    const id = Room._id;
+    const momentDate = moment(Date);
     const addDate = momentDate.subtract(1, "days");
     const finalDate = addDate.format("YYYY-MM-DD");
     const toDay = moment(currentDate).format("YYYY-MM-DD");
     const compare = moment(toDay).isBefore(finalDate);
+    const seat = { seats, id };
     if (compare) {
       Swal.fire({
         title: "Are you sure?",
@@ -54,15 +57,17 @@ const BookedRoom = ({ Room, setBookedRooms, bookedRooms }) => {
         cancelButtonText: "No!",
       }).then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/booked/${id}`, {
+          fetch(`http://localhost:5000/booked/${num}`, {
             method: "PUT",
             headers: {
               "Content-Type": "application/json",
             },
             credentials: "include",
+            body: JSON.stringify(seat),
           })
             .then((res) => res.json())
             .then((data) => {
+              console.log(num, data);
               if (data.modifiedCount > 0) {
                 Swal.fire({
                   title: "Cancelled!",
@@ -81,7 +86,6 @@ const BookedRoom = ({ Room, setBookedRooms, bookedRooms }) => {
   };
 
   const handlePostReview = () => {
-    console.log(Room._id);
     Swal.fire({
       title: "Rate and Comment",
       html:
@@ -118,10 +122,13 @@ const BookedRoom = ({ Room, setBookedRooms, bookedRooms }) => {
         <img src={Room.image} alt="Shoes" />
       </figure>
       <div className="card-body">
-        <h2 className="card-title">{Room.status}</h2>
         <p>
-          Check In date: <span className="font-bold">{date}</span>
+          Check In date: <span className="font-bold">{Date}</span>
         </p>
+        <p>
+          Seat: <span className="font-bold">{Room.seat}</span>
+        </p>
+
         <p>{Room.short_description}</p>
         <p
           onClick={handlePostReview}
@@ -137,7 +144,7 @@ const BookedRoom = ({ Room, setBookedRooms, bookedRooms }) => {
             Update Date
           </button>
           <button
-            onClick={() => handleCancel(Room._id)}
+            onClick={() => handleCancel(Room.num)}
             className="btn btn-outline btn-error"
           >
             Cancel

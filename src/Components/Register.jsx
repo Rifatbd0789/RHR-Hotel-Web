@@ -27,18 +27,7 @@ const Register = () => {
         "Registration Failed !  Password must be more than 6 character !"
       );
       return;
-    } else if (!/[A-Z]/.test(password)) {
-      setRegisterError(
-        "Registration Failed !  Password must include at least one Capital letter !"
-      );
-      return;
-    } else if (!/[#?!@$%^&*-]/.test(password)) {
-      setRegisterError(
-        "Registration Failed !  Password must include a special character!"
-      );
-      return;
     }
-
     createUser(email, password)
       .then((result) => {
         updateProfile(result.user, {

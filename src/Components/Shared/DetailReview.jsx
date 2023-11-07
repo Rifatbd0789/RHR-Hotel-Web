@@ -1,5 +1,7 @@
 /* eslint-disable react/prop-types */
 
+import moment from "moment";
+
 const DetailReview = ({ Review }) => {
   const Ratings = (
     <div className="rating">
@@ -40,11 +42,12 @@ const DetailReview = ({ Review }) => {
       />
     </div>
   );
-  console.log(typeof Review.rating);
+  const createdAt = moment(Review?.created).format("lll");
   return (
-    <div>
-      {Ratings}
-      <h2>Comment:{Review.comment}</h2>
+    <div className="text-center">
+      <div>{Ratings}</div>
+      <h2>{Review.comment}</h2>
+      <p>{createdAt}</p>
     </div>
   );
 };

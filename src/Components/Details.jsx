@@ -11,19 +11,33 @@ const Details = () => {
   const navigate = useNavigate();
   const [Reviews, setReviews] = useState([]);
   const { user } = useContext(context);
-  const userEmail = user?.displayName;
+  const email = user?.email;
   // console.log(userEmail);
 
   const handleBook = (e) => {
     e.preventDefault();
     const date = e.target.date.value;
-    console.log(date);
-    const dateStore = { date, userEmail };
+    const seat = e.target.seat.value;
+    const short_description = Room.short_description;
+    const image = Room.image;
+    const num = Room.num;
+    // const seat = parseInt(seats);
+    // const dateStore = { date, email };
+    // console.log(typeof Room.seats);
+    const seats = { date, email, seat, short_description, image, num };
+    if (Room.seats < seat || seat === "0") {
+      Swal.fire(
+        "Please Choose Seats less or equal then Available Seats, and do not use 0 seats !"
+      );
+      return;
+    }
+
     Swal.fire({
       title: "Are you sure?",
       html: `
           <p className="text-orange-500">${Room.short_description}</p>
           <p>Price: ${Room.price}$</p>
+          <p>Seats: ${seat}</p>
           <p>Date: ${date}</p>
       `,
       icon: "warning",
@@ -34,17 +48,11 @@ const Details = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         // Booking and sending date to server
-        fetch(`http://localhost:5000/room/${Room._id}`, {
-          method: "PATCH",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(dateStore),
-          credentials: "include",
-        })
-          .then((res) => res.json())
-          .then((data) => {
-            if (data.modifiedCount > 0) {
+
+        axios
+          .put(`http://localhost:5000/room/seat/${Room._id}`, seats)
+          .then((res) => {
+            if (res.data.modifiedCount > 0) {
               Swal.fire("Booked!", "Your Booking is completed", "success");
               navigate("/room");
             } else {
@@ -52,6 +60,7 @@ const Details = () => {
               navigate("/login");
             }
           });
+        navigate("/room");
       }
     });
   };
@@ -89,11 +98,22 @@ const Details = () => {
                 <span className="text-red-400">No Offers Available !</span>
               )}
             </p>
+            <p>Available Seats: {Room.seats}</p>
             {/* <div> {Ratings}</div> */}
             <form onSubmit={handleBook}>
-              <span>Select your CheckIn Date Below:</span>
-              <div className="flex">
+              <span>Select your CheckIn Date and Seats Below:</span>
+              <div className="flex gap-4">
                 <input className="" type="date" required name="date" id="" />
+                <div>
+                  <span>Seats: </span>
+                  <input
+                    className="input input-warning"
+                    type="number"
+                    required
+                    name="seat"
+                    id=""
+                  />
+                </div>
               </div>
               <div className="card-actions justify-end">
                 <input
@@ -105,15 +125,15 @@ const Details = () => {
             </form>
           </div>
           {/* Review Section */}
-          <div className="flex gap-5 flex-wrap mt-10">
-            {Reviews.length === 0 ? (
-              <p className="text-red-400">Not Reviewed Yet!</p>
-            ) : (
-              Reviews.map((Review) => (
-                <DetailReview key={Review._id} Review={Review}></DetailReview>
-              ))
-            )}
-          </div>
+        </div>
+        <div className="flex gap-5 mt-10">
+          {Reviews.length === 0 ? (
+            <p className="text-red-400">Not Reviewed Yet!</p>
+          ) : (
+            Reviews.map((Review) => (
+              <DetailReview key={Review._id} Review={Review}></DetailReview>
+            ))
+          )}
         </div>
       </div>
     </div>
