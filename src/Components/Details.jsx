@@ -124,7 +124,7 @@ const Details = () => {
                 <input
                   type="submit"
                   value="Book Now"
-                  className="btn btn-primary"
+                  className="btn btn-sm lg:btn-md  shadow-orange-600 shadow-md text-white border-none bg-orange-400  normal-case hover:text-black"
                 />
               </div>
             </form>

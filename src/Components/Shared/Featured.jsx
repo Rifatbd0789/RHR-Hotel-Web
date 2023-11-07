@@ -12,11 +12,16 @@ const Featured = ({ Room }) => {
         <div className="card-body">
           <h2 className="card-title">
             Only at {Room.price}$
-            <div className="badge bg-red-600 text-white">NEW</div>
+            <div className="badge bg-red-600 text-white shadow-black shadow-sm">
+              NEW
+            </div>
           </h2>
           <p>{Room.short_description}</p>
           <div className="card-actions justify-end">
-            <Link className="btn btn-sm lg:btn-md shadow-black text-white border-none bg-orange-400  normal-case hover:text-black">
+            <Link
+              to={`/room/details/${Room._id}`}
+              className="btn btn-sm lg:btn-md  shadow-orange-600 shadow-md text-white border-none bg-orange-400  normal-case hover:text-black"
+            >
               Book Now !
             </Link>
           </div>
