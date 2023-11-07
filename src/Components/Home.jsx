@@ -6,11 +6,15 @@ import Featured from "./Shared/Featured";
 import Testimonial from "./Shared/Testimonial";
 import { useLoaderData } from "react-router-dom";
 import Newsletter from "./Shared/Newsletter";
+import { useEffect } from "react";
+import Aos from "aos";
 const Home = () => {
   const loadedRooms = useLoaderData();
   const Rooms = loadedRooms.filter((Room) => Room.featured === true);
   // console.log(Rooms);
-
+  useEffect(() => {
+    Aos.refresh();
+  }, []);
   return (
     <div className="bg-orange-300">
       <Helmet>

@@ -5,6 +5,7 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import DetailReview from "./Shared/DetailReview";
 import { context } from "./ContextProvider/Provider";
+import Aos from "aos";
 
 const Details = () => {
   const Room = useLoaderData();
@@ -70,6 +71,7 @@ const Details = () => {
     });
   };
   useEffect(() => {
+    Aos.refresh();
     axios
       .get(`http://localhost:5000/review/${Room.num}`)
       .then((res) => setReviews(res.data))

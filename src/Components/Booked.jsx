@@ -2,12 +2,17 @@ import { useState } from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import BookedRoom from "./BookedRoom";
 import { Helmet } from "react-helmet";
+import { useEffect } from "react";
+import Aos from "aos";
 // import Swal from "sweetalert2";
 
 const Booked = () => {
   const Room = useLoaderData();
   const [bookedRooms, setBookedRooms] = useState(Room);
   //   setBookedRooms(Room);
+  useEffect(() => {
+    Aos.refresh();
+  }, []);
 
   return (
     <div>
@@ -24,7 +29,7 @@ const Booked = () => {
         <div
           data-aos="fade-down"
           data-aos-duration="2000"
-          className="text-center space-y-10 "
+          className="text-center space-y-10 my-10"
         >
           <p className="text-2xl mt-5 font-bold text-red-600">
             Sorry ! You Currently have no bookings

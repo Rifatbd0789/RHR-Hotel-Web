@@ -1,3 +1,5 @@
+import Aos from "aos";
+import { useEffect } from "react";
 import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link, useLoaderData } from "react-router-dom";
@@ -6,6 +8,9 @@ const Rooms = () => {
   const allRooms = useLoaderData();
   //   console.log(availableRooms);
   const [availableRooms, setAvailableRooms] = useState(allRooms);
+  useEffect(() => {
+    Aos.refresh();
+  }, []);
   const handleSort = (e) => {
     const value = e.target.value;
     fetch(`http://localhost:5000/room/${value}`)

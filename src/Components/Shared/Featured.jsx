@@ -1,8 +1,12 @@
+import Aos from "aos";
+import { useEffect } from "react";
 import { Link } from "react-router-dom";
 
 /* eslint-disable react/prop-types */
 const Featured = ({ Room }) => {
-  console.log(Room);
+  useEffect(() => {
+    Aos.refresh();
+  }, []);
   return (
     <div>
       <div

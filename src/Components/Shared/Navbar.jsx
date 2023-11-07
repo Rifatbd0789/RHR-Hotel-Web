@@ -20,7 +20,6 @@ const Navbar = () => {
           Home
         </NavLink>
       </li>
-
       <li>
         <NavLink
           to="/room"
@@ -29,7 +28,6 @@ const Navbar = () => {
           Rooms
         </NavLink>
       </li>
-
       <li>
         <NavLink
           to="/booked"
@@ -105,7 +103,7 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{links}</ul>
         </div>
         <div className="navbar-end w-fit md:w-1/2">
-          <a className="">{Users}</a>
+          <div className="">{Users}</div>
         </div>
       </div>
     </div>
