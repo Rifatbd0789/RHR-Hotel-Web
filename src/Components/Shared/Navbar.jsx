@@ -7,7 +7,7 @@ const Navbar = () => {
   const { user, logOutUser } = useContext(context);
   const handleLogOut = () => {
     logOutUser()
-      .then(() => Swal.fire("Logout Successfully!"))
+      .then(() => Swal.fire({ text: "Logout Successfully!", icon: "success" }))
       .catch((err) => Swal.fire(err.code));
   };
   const links = (

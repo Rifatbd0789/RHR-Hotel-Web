@@ -54,10 +54,6 @@ const router = createBrowserRouter([
             <Booked />
           </Private>
         ),
-        loader: () =>
-          fetch("https://rhr-hotel-server.vercel.app/booked", {
-            credentials: "include",
-          }),
       },
       {
         path: "/login",

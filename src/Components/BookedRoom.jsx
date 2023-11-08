@@ -33,7 +33,7 @@ const BookedRoom = ({ Room, setBookedRooms, bookedRooms }) => {
       .then((data) => {
         if (data.modifiedCount > 0) {
           Swal.fire({
-            title: "Cancelled!",
+            title: "Updated!",
             text: "Successfully Updated Check In Date!",
             icon: "success",
           });

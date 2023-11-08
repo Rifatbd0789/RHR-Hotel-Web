@@ -1,14 +1,33 @@
 import { useState } from "react";
-import { Link, useLoaderData } from "react-router-dom";
+import { Link } from "react-router-dom";
 import BookedRoom from "./BookedRoom";
 import { Helmet } from "react-helmet";
-
 import bookedFav from "/booked.svg";
+// import { useEffect } from "react";
+// import axios from "axios";
+// import Swal from "sweetalert2";
+import { useEffect } from "react";
+import { useContext } from "react";
+import { context } from "./ContextProvider/Provider";
+// import Aos from "aos";
+import axios from "axios";
+// import Aos from "aos";
 // import Swal from "sweetalert2";
 
 const Booked = () => {
-  const Room = useLoaderData();
-  const [bookedRooms, setBookedRooms] = useState(Room);
+  // const Room = useLoaderData();
+  const { user } = useContext(context);
+
+  // const navigate = useNavigate();
+  const [bookedRooms, setBookedRooms] = useState([]);
+  useEffect(() => {
+    // Aos.refresh();
+    axios
+      .get(`https://rhr-hotel-server.vercel.app/booked/${user.email}`, {
+        withCredentials: true,
+      })
+      .then((res) => setBookedRooms(res.data));
+  }, [user?.email]);
 
   return (
     <div>
@@ -18,11 +37,11 @@ const Booked = () => {
       </Helmet>
       <div data-aos="fade-up" data-aos-duration="2000">
         <h1 className="text-center rounded-xl border border-l-4 border-orange-200 m-5 bg-orange-200 md:text-3xl font-bold py-2">
-          Booked Rooms: {bookedRooms.length}
+          Booked Rooms: {bookedRooms?.length}
         </h1>
       </div>
 
-      {bookedRooms.length === 0 ? (
+      {bookedRooms?.length === 0 ? (
         <div
           data-aos="fade-down"
           data-aos-duration="2000"
@@ -40,11 +59,11 @@ const Booked = () => {
         </div>
       ) : (
         <div
-          data-aos="fade-down"
+          data-aos="fade-up"
           data-aos-duration="2000"
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-10 my-5 gap-8"
         >
-          {bookedRooms.map((Room) => (
+          {bookedRooms?.map((Room) => (
             <BookedRoom
               key={Room._id}
               Room={Room}

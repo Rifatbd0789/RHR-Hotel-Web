@@ -11,13 +11,14 @@ import {
 import { createContext, useEffect, useState } from "react";
 import auth from "../../Firebase/firebase.config";
 import axios from "axios";
+// import Swal from "sweetalert2";
 
 const provider = new GoogleAuthProvider();
 
 export const context = createContext(null);
 
 const Provider = ({ children }) => {
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
 
   const createUser = (email, password) => {
@@ -61,6 +62,11 @@ const Provider = ({ children }) => {
             withCredentials: true,
           })
           .then((res) => console.log(res.data));
+        // .catch((err) => {
+        //   if (err) {
+        //     Swal.fire("please login");
+        //   }
+        // });
         // setLoading(false);
       }
     });
