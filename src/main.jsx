@@ -15,6 +15,7 @@ import Error from "./Components/Shared/Error";
 import Aos from "aos";
 
 import "aos/dist/aos.css";
+import ContactUs from "./Components/ContactUs";
 Aos.init();
 Aos.refresh();
 const router = createBrowserRouter([
@@ -59,6 +60,10 @@ const router = createBrowserRouter([
       {
         path: "/register",
         element: <Register />,
+      },
+      {
+        path: "/contact",
+        element: <ContactUs />,
       },
     ],
   },

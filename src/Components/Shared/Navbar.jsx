@@ -36,6 +36,14 @@ const Navbar = () => {
           My Bookings
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to="/contact"
+          className={({ isActive }) => (isActive ? "bg-orange-200" : "")}
+        >
+          Contact Us
+        </NavLink>
+      </li>
     </>
   );
   const Users = (
