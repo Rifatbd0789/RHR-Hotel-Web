@@ -44,6 +44,14 @@ const Navbar = () => {
           Contact Us
         </NavLink>
       </li>
+      <li>
+        <NavLink
+          to="/about"
+          className={({ isActive }) => (isActive ? "bg-orange-200" : "")}
+        >
+          About Us
+        </NavLink>
+      </li>
     </>
   );
   const Users = (
@@ -71,9 +79,12 @@ const Navbar = () => {
   return (
     <div className="">
       <div className="navbar justify-between">
-        <div className="navbar-start w-fit md:w-1/2">
+        <div className="navbar-start  md:w-1/2">
           <div className="dropdown">
-            <label tabIndex={0} className="btn pr-1 btn-sm btn-ghost lg:hidden">
+            <label
+              tabIndex={0}
+              className="btn pr-2 pl-0 btn-sm btn-ghost lg:hidden"
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-5 w-5"

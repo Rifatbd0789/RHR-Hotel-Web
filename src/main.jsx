@@ -16,6 +16,7 @@ import Aos from "aos";
 
 import "aos/dist/aos.css";
 import ContactUs from "./Components/ContactUs";
+import AboutUs from "./Components/AboutUs";
 Aos.init();
 Aos.refresh();
 const router = createBrowserRouter([
@@ -64,6 +65,10 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         element: <ContactUs />,
+      },
+      {
+        path: "/about",
+        element: <AboutUs />,
       },
     ],
   },

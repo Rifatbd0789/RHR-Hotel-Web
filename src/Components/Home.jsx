@@ -42,7 +42,7 @@ const Home = () => {
       <div className="border-b-2 border-white w-full mx-auto">
         <Testimonial />
       </div>
-      <div data-aos="flip-right" data-aos-duration="2000">
+      <div className="py-5" data-aos="flip-right" data-aos-duration="2000">
         <Newsletter></Newsletter>
       </div>
     </div>
