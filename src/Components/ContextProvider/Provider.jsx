@@ -48,13 +48,13 @@ const Provider = ({ children }) => {
       // if user exist than issue a token
       if (currentUser) {
         axios
-          .post("http://localhost:5000/jwt", loggedEmail, {
+          .post("https://rhr-hotel-server.vercel.app/jwt", loggedEmail, {
             withCredentials: true,
           })
           .then(() => {});
       } else {
         axios
-          .post("http://localhost:5000/logout", loggedEmail, {
+          .post("https://rhr-hotel-server.vercel.app/logout", loggedEmail, {
             withCredentials: true,
           })
           .then(() => {});

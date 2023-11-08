@@ -13,7 +13,6 @@ const Details = () => {
   const [Reviews, setReviews] = useState([]);
   const { user } = useContext(context);
   const email = user?.email;
-  // console.log(userEmail);
 
   const handleBook = (e) => {
     e.preventDefault();
@@ -51,9 +50,13 @@ const Details = () => {
         // Booking and sending date to server
 
         axios
-          .put(`http://localhost:5000/room/seat/${Room._id}`, seats, {
-            withCredentials: true,
-          })
+          .put(
+            `https://rhr-hotel-server.vercel.app/room/seat/${Room._id}`,
+            seats,
+            {
+              withCredentials: true,
+            }
+          )
           .then((res) => {
             console.log(res.data);
             if (res.data.modifiedCount > 0) {
@@ -73,7 +76,7 @@ const Details = () => {
   useEffect(() => {
     Aos.refresh();
     axios
-      .get(`http://localhost:5000/review/${Room.num}`)
+      .get(`https://rhr-hotel-server.vercel.app/review/${Room.num}`)
       .then((res) => setReviews(res.data))
       .catch((error) => {
         console.error("Error:", error);
@@ -111,7 +114,6 @@ const Details = () => {
               )}
             </p>
             <p>Available Seats: {Room.seats}</p>
-            {/* <div> {Ratings}</div> */}
             <form onSubmit={handleBook}>
               <span>Select your CheckIn Date and Seats Below:</span>
               <div className="flex flex-col md:flex-row md:gap-4 my-2 md:my-0">

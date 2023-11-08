@@ -13,7 +13,7 @@ const Rooms = () => {
   }, []);
   const handleSort = (e) => {
     const value = e.target.value;
-    fetch(`http://localhost:5000/room/${value}`)
+    fetch(`https://rhr-hotel-server.vercel.app/room/${value}`)
       .then((res) => res.json())
       .then((data) => setAvailableRooms(data));
   };

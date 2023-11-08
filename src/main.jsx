@@ -28,21 +28,24 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch("http://localhost:5000/room"),
+        loader: () => fetch("https://rhr-hotel-server.vercel.app/room"),
       },
       {
         path: "/room",
         element: <Rooms />,
-        loader: () => fetch("http://localhost:5000/room"),
+        loader: () => fetch("https://rhr-hotel-server.vercel.app/room"),
       },
       {
         path: "/room/details/:id",
         element: <Details />,
 
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/room/details/${params.id}`, {
-            credentials: "include",
-          }),
+          fetch(
+            `https://rhr-hotel-server.vercel.app/room/details/${params.id}`,
+            {
+              credentials: "include",
+            }
+          ),
       },
       {
         path: "/booked",
@@ -52,7 +55,9 @@ const router = createBrowserRouter([
           </Private>
         ),
         loader: () =>
-          fetch("http://localhost:5000/booked", { credentials: "include" }),
+          fetch("https://rhr-hotel-server.vercel.app/booked", {
+            credentials: "include",
+          }),
       },
       {
         path: "/login",
