@@ -3,10 +3,7 @@ import Swal from "sweetalert2";
 const Newsletter = () => {
   return (
     <div className="flex flex-col md:flex-row md:w-3/4 mx-auto my-5  justify-center lg:justify-around  bg-orange-200 rounded-2xl text-center lg:text-left ">
-      {/* left side */}
-      {/* <div className=" w-2/3 flex rounded-xl  lg:justify-center    "> */}
       <div className="card  px-0 md:px-10  max-w-sm md:max-w-2xl ">
-        {/* <div className="card-body w-3/4 px-4 md:px-8 mx-auto items-center"> */}
         <div className="lg:w-2/3 card-body">
           <img
             className=" w-full "

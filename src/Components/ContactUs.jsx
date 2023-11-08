@@ -1,5 +1,6 @@
 import Aos from "aos";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 import { FcHome, FcPhone } from "react-icons/fc";
 import { MdEmail } from "react-icons/md";
 import Swal from "sweetalert2";
@@ -10,6 +11,10 @@ const ContactUs = () => {
   }, []);
   return (
     <div>
+      <Helmet>
+        <link rel="icon" href="/contactus.svg" type="image/x-icon" />
+        <title>Contact Us!</title>
+      </Helmet>
       <div data-aos="fade-up" data-aos-duration="2000">
         <h1 className="text-center rounded-xl border border-l-4 border-orange-200 mx-5 bg-orange-200 md:text-3xl font-bold py-2">
           Contact Us!

@@ -1,5 +1,6 @@
 import Aos from "aos";
 import { useEffect } from "react";
+import { Helmet } from "react-helmet";
 
 const AboutUs = () => {
   useEffect(() => {
@@ -7,6 +8,10 @@ const AboutUs = () => {
   }, []);
   return (
     <div>
+      <Helmet>
+        <link rel="icon" href="/aboutus.svg" type="image/x-icon" />
+        <title>About Us!</title>
+      </Helmet>
       <div>
         <div data-aos="fade-up" data-aos-duration="2000">
           <h1 className="text-center rounded-xl border border-l-4 border-orange-200 m-5 bg-orange-200 md:text-3xl font-bold py-2">

@@ -16,7 +16,7 @@ const Home = () => {
     Aos.refresh();
   }, []);
   return (
-    <div className="bg-orange-300">
+    <div className=" space-y-10">
       <Helmet>
         <link rel="icon" href="/hotel-svgrepo-com.svg" type="image/x-icon" />
         <title>RHR-Hotel</title>
@@ -42,8 +42,8 @@ const Home = () => {
       <div className="border-b-2 border-white w-full mx-auto">
         <Testimonial />
       </div>
-      <div className="py-5" data-aos="flip-right" data-aos-duration="2000">
-        <Newsletter></Newsletter>
+      <div className="py-5 mx-5" data-aos="flip-right" data-aos-duration="2000">
+        <Newsletter />
       </div>
     </div>
   );

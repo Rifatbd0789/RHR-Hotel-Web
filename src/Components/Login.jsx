@@ -20,17 +20,16 @@ const Login = () => {
       .then(() => {
         e.target.reset();
         Swal.fire("Successfully! Logged In! ");
-        navigate(location?.state ? location.state : "/");
+        navigate(location?.state ? location?.state : "/");
       })
       .catch((err) => setLogInError(err.code));
   };
-
   const handleGoogleLog = () => {
     setLogInError("");
     googleLogIn()
       .then(() => {
         Swal.fire(" Successfully! Registered & Logged In!");
-        navigate(location?.state ? location.state : "/");
+        navigate(location?.state ? location?.state : "/");
       })
       .catch((error) => setLogInError(error.code));
   };

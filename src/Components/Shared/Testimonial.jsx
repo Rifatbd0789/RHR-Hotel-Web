@@ -31,7 +31,8 @@ const Testimonial = () => {
                 <div className=" avatar w-36 md:w-48 h-36 md:h-48">
                   <img
                     className="  rounded-full"
-                    src="https://i.ibb.co/4psncQy/1.jpg"
+                    src="https://i.ibb.co/NrwZ7c2/2.jpg
+                    "
                     alt=""
                   />
                 </div>
@@ -82,7 +83,8 @@ const Testimonial = () => {
               <div className="avatar w-36 md:w-48 h-36 md:h-48">
                 <img
                   className="rounded-full"
-                  src="https://i.ibb.co/VCRbLBB/3.jpg"
+                  src="https://i.ibb.co/fYh90D0/3.jpg
+                  "
                   alt=""
                 />
               </div>
@@ -131,7 +133,8 @@ const Testimonial = () => {
               <div className="avatar w-36 md:w-48 h-36 md:h-48 ">
                 <img
                   className=" rounded-full"
-                  src="https://i.ibb.co/dGgMCgY/2.jpg"
+                  src="https://i.ibb.co/CVQbRb1/4.jpg
+                  "
                   alt=""
                 />
               </div>
@@ -180,7 +183,7 @@ const Testimonial = () => {
               <div className="avatar w-36 md:w-48 h-36 md:h-48">
                 <img
                   className="rounded-full"
-                  src="https://i.ibb.co/WBNCng3/4.jpg"
+                  src="https://i.ibb.co/ZYn21hY/1.jpg"
                   alt=""
                 />
               </div>

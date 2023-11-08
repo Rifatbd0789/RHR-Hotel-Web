@@ -48,7 +48,7 @@ const Register = () => {
     googleLogIn()
       .then(() => {
         Swal.fire(" Successfully Registered & Logged In!");
-        navigate(location?.state ? location.state : "/");
+        navigate(location?.state ? location?.state : "/");
       })
       .catch((error) => setRegisterError(error));
   };
