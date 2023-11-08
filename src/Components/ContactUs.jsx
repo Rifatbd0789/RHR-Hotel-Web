@@ -4,6 +4,7 @@ import { Helmet } from "react-helmet";
 import { FcHome, FcPhone } from "react-icons/fc";
 import { MdEmail } from "react-icons/md";
 import Swal from "sweetalert2";
+import contactFav from "/contactus.svg";
 
 const ContactUs = () => {
   useEffect(() => {
@@ -12,11 +13,11 @@ const ContactUs = () => {
   return (
     <div>
       <Helmet>
-        <link rel="icon" href="/contactus.svg" type="image/x-icon" />
+        <link rel="icon" href={contactFav} type="image/x-icon" />
         <title>Contact Us!</title>
       </Helmet>
       <div data-aos="fade-up" data-aos-duration="2000">
-        <h1 className="text-center rounded-xl border border-l-4 border-orange-200 mx-5 bg-orange-200 md:text-3xl font-bold py-2">
+        <h1 className="text-center rounded-xl border border-l-4 border-orange-200 mx-5 bg-orange-200 mt-5 md:text-3xl font-bold py-2">
           Contact Us!
         </h1>
       </div>
@@ -35,7 +36,7 @@ const ContactUs = () => {
                     <input
                       type="text"
                       placeholder="Enter Your Name.."
-                      className="input input-bordered "
+                      className="input input-bordered bg-orange-200 text-white"
                       required
                     />
                   </div>
@@ -43,7 +44,7 @@ const ContactUs = () => {
                     <input
                       type="text"
                       placeholder="Enter your email.."
-                      className="input input-bordered "
+                      className="input input-bordered bg-orange-200"
                       required
                     />
                   </div>
@@ -53,7 +54,7 @@ const ContactUs = () => {
                     <input
                       type="text"
                       placeholder="Enter Subject.."
-                      className="input input-bordered "
+                      className="input input-bordered bg-orange-200"
                       required
                     />
                   </div>
@@ -62,7 +63,7 @@ const ContactUs = () => {
                   <div className="form-control w-full">
                     <textarea
                       placeholder="Message.."
-                      className="textarea textarea-bordered textarea-lg w-full max-w-lg "
+                      className="textarea textarea-bordered textarea-lg w-full max-w-lg bg-orange-200"
                     ></textarea>
                   </div>
                   <div className="form-control">

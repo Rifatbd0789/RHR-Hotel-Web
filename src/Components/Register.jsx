@@ -5,6 +5,7 @@ import { context } from "./ContextProvider/Provider";
 import Swal from "sweetalert2";
 import { FcGoogle } from "react-icons/fc";
 import { Helmet } from "react-helmet";
+import homeFav from "/hotel-svgrepo-com.svg";
 
 const Register = () => {
   const { createUser, googleLogIn } = useContext(context);
@@ -37,7 +38,10 @@ const Register = () => {
           .then()
           .catch((error) => setRegisterError(error.code));
         e.target.reset();
-        Swal.fire(`${Name} Successfully Registered !`);
+        Swal.fire({
+          text: `${Name} Successfully Registered !`,
+          icon: "success",
+        });
         navigate("/login");
       })
       .catch((error) => setRegisterError(error.code));
@@ -47,7 +51,10 @@ const Register = () => {
     setRegisterError("");
     googleLogIn()
       .then(() => {
-        Swal.fire(" Successfully Registered & Logged In!");
+        Swal.fire({
+          text: " Successfully Registered & Logged In!",
+          icon: "success",
+        });
         navigate(location?.state ? location?.state : "/");
       })
       .catch((error) => setRegisterError(error));
@@ -55,6 +62,7 @@ const Register = () => {
   return (
     <div>
       <Helmet>
+        <link rel="icon" href={homeFav} type="image/x-icon" />
         <title>Registration</title>
       </Helmet>
       <div className="hero min-h-screen  bg-orange-400">

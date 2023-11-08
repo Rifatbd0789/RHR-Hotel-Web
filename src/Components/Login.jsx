@@ -4,6 +4,7 @@ import { FcGoogle } from "react-icons/fc";
 import { context } from "./ContextProvider/Provider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
+import homeFav from "/hotel-svgrepo-com.svg";
 
 const Login = () => {
   const { logInUser, googleLogIn } = useContext(context);
@@ -19,8 +20,8 @@ const Login = () => {
     logInUser(email, password)
       .then(() => {
         e.target.reset();
-        Swal.fire("Successfully! Logged In! ");
-        navigate(location?.state ? location?.state : "/");
+        Swal.fire({ text: "Successfully! Logged In! ", icon: "success" });
+        navigate(location?.state ? location.state : "/");
       })
       .catch((err) => setLogInError(err.code));
   };
@@ -28,14 +29,18 @@ const Login = () => {
     setLogInError("");
     googleLogIn()
       .then(() => {
-        Swal.fire(" Successfully! Registered & Logged In!");
-        navigate(location?.state ? location?.state : "/");
+        Swal.fire({
+          text: " Successfully! Registered & Logged In!",
+          icon: "success",
+        });
+        navigate(location?.state ? location.state : "/");
       })
       .catch((error) => setLogInError(error.code));
   };
   return (
     <div>
       <Helmet>
+        <link rel="icon" href={homeFav} type="image/x-icon" />
         <title>Login</title>
       </Helmet>
       <div className="hero min-h-screen bg-orange-400">

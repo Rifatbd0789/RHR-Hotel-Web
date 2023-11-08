@@ -47,17 +47,21 @@ const Provider = ({ children }) => {
       setLoading(false);
       // if user exist than issue a token
       if (currentUser) {
+        // setLoading(true);
         axios
           .post("https://rhr-hotel-server.vercel.app/jwt", loggedEmail, {
             withCredentials: true,
           })
-          .then(() => {});
+          .then((res) => console.log(res.data));
+        // setLoading(false);
       } else {
+        // setLoading(true);
         axios
           .post("https://rhr-hotel-server.vercel.app/logout", loggedEmail, {
             withCredentials: true,
           })
-          .then(() => {});
+          .then((res) => console.log(res.data));
+        // setLoading(false);
       }
     });
     return () => unSubscribe;

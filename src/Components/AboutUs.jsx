@@ -1,6 +1,7 @@
 import Aos from "aos";
 import { useEffect } from "react";
 import { Helmet } from "react-helmet";
+import auboutFav from "/aboutus.svg";
 
 const AboutUs = () => {
   useEffect(() => {
@@ -9,7 +10,7 @@ const AboutUs = () => {
   return (
     <div>
       <Helmet>
-        <link rel="icon" href="/aboutus.svg" type="image/x-icon" />
+        <link rel="icon" href={auboutFav} type="image/x-icon" />
         <title>About Us!</title>
       </Helmet>
       <div>

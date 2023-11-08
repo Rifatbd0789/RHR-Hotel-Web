@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Helmet } from "react-helmet";
 import { Link, useLoaderData } from "react-router-dom";
+import roomFav from "/room.svg";
 
 const Rooms = () => {
   const allRooms = useLoaderData();
@@ -20,7 +21,7 @@ const Rooms = () => {
   return (
     <div>
       <Helmet>
-        <link rel="icon" href="/room.svg" type="image/x-icon" />
+        <link rel="icon" href={roomFav} type="image/x-icon" />
         <title>Rooms</title>
       </Helmet>
       <div className="flex justify-center">
@@ -44,7 +45,7 @@ const Rooms = () => {
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10 mx-10 mb-10"
       >
         {availableRooms.map((Room) => (
-          <div className="card bg-base-100 shadow-2xl" key={Room._id}>
+          <div className="card bg-orange-200 shadow-2xl" key={Room._id}>
             <Link className="card-body" to={`/room/details/${Room._id}`}>
               <img className="rounded-lg" src={Room.image} alt="" />
               <div className="flex mt-2">

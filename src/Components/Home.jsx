@@ -8,6 +8,7 @@ import { useLoaderData } from "react-router-dom";
 import Newsletter from "./Shared/Newsletter";
 import { useEffect } from "react";
 import Aos from "aos";
+import homeFav from "/hotel-svgrepo-com.svg";
 const Home = () => {
   const loadedRooms = useLoaderData();
   const Rooms = loadedRooms.filter((Room) => Room.featured === true);
@@ -18,7 +19,7 @@ const Home = () => {
   return (
     <div className=" space-y-10">
       <Helmet>
-        <link rel="icon" href="/hotel-svgrepo-com.svg" type="image/x-icon" />
+        <link rel="icon" href={homeFav} type="image/x-icon" />
         <title>RHR-Hotel</title>
       </Helmet>
       <div>

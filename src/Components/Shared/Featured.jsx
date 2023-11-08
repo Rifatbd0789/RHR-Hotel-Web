@@ -12,7 +12,7 @@ const Featured = ({ Room }) => {
       <div
         data-aos="flip-left"
         data-aos-duration="2000"
-        className="card bg-base-100 shadow-2xl"
+        className="card bg-orange-200 shadow-2xl"
       >
         <figure>
           <img src={Room.image} alt="Shoes" />

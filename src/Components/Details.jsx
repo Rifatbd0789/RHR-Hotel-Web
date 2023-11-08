@@ -6,6 +6,7 @@ import Swal from "sweetalert2";
 import DetailReview from "./Shared/DetailReview";
 import { context } from "./ContextProvider/Provider";
 import Aos from "aos";
+import detailsFav from "/details.svg";
 
 const Details = () => {
   const Room = useLoaderData();
@@ -85,10 +86,10 @@ const Details = () => {
   return (
     <div>
       <Helmet>
-        <link rel="icon" href="/details.svg" type="image/x-icon" />
+        <link rel="icon" href={detailsFav} type="image/x-icon" />
         <title>Details</title>
       </Helmet>
-      <div className="card pb-5  bg-base-100 shadow-xl mx-10 px-5 pt-2">
+      <div className="card pb-5  bg-orange-200 shadow-xl mx-10 mb-10 px-5 pt-2">
         <div
           data-aos="fade-down"
           data-aos-duration="2000"
@@ -147,7 +148,7 @@ const Details = () => {
           {/* Review Section */}
         </div>
         <div data-aos="fade-up" data-aos-duration="2000">
-          <h1 className="text-center rounded-xl border border-l-4 border-orange-200 m-5 bg-orange-200 md:text-3xl font-bold ">
+          <h1 className="text-center rounded-xl border border-l-4 border-orange-400 m-5 bg-orange-400  md:text-3xl font-bold ">
             Reviews
           </h1>
           <div className="flex flex-wrap gap-5 mt-10">
