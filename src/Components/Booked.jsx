@@ -19,7 +19,7 @@ const Booked = () => {
   const { user } = useContext(context);
 
   // const navigate = useNavigate();
-  const [bookedRooms, setBookedRooms] = useState([]);
+  const [bookedRooms, setBookedRooms] = useState();
   useEffect(() => {
     // Aos.refresh();
     axios
@@ -35,16 +35,18 @@ const Booked = () => {
         <link rel="icon" href={bookedFav} type="image/x-icon" />
         <title>Booked Rooms</title>
       </Helmet>
-      <div data-aos="fade-up" data-aos-duration="2000">
+      <div
+      // data-aos="fade-up" data-aos-duration="2000"
+      >
         <h1 className="text-center rounded-xl border border-l-4 border-orange-200 m-5 bg-orange-200 md:text-3xl font-bold py-2">
-          Booked Rooms: {bookedRooms?.length}
+          Booked Rooms:{bookedRooms?.length}
         </h1>
       </div>
 
       {bookedRooms?.length === 0 ? (
         <div
-          data-aos="fade-down"
-          data-aos-duration="2000"
+          // data-aos="fade-down"
+          // data-aos-duration="2000"
           className="text-center space-y-10 my-10"
         >
           <p className="text-2xl mt-5 font-bold text-red-600">
@@ -59,8 +61,8 @@ const Booked = () => {
         </div>
       ) : (
         <div
-          data-aos="fade-up"
-          data-aos-duration="2000"
+          // data-aos="fade-up"
+          // data-aos-duration="2000"
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 mx-10 my-5 gap-8"
         >
           {bookedRooms?.map((Room) => (
