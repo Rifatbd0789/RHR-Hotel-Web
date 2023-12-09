@@ -1,6 +1,6 @@
 # RHR-Hotel website using React , MongoDB, ExpressJS and Node(MERN)
 
-### RHR-Hotel Live Link : [ https://rhr-hotel-ade49.firebaseapp.com/](https://rhr-hotel-ade49.firebaseapp.com/)
+### RHR-Hotel Live Link : [https://rhr-hote-2.surge.sh/](https://rhr-hote-2.surge.sh/)
 
 ##### Some features and functionalities of RHR-Hotel Website:
 
